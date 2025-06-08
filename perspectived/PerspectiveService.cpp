@@ -32,6 +32,7 @@ using aidl::vendor::lindroid::perspective::LXCContainerManager;
 
 int main(void) {
     umask(0000);
+    system("/system/bin/service call SurfaceFlinger 1008 i32 1");
     auto perspective = ndk::SharedRefBase::make<LXCContainerManager>();
 
     binder_status_t status = AServiceManager_addService(perspective->asBinder().get(), SERVICE_NAME);
